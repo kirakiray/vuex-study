@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+        <br>
+        {{count}}
+        {{(count + 1) * 10}}
+        <div v-html="temp"></div>
+        <!-- <a v-bind:href="url" target="_blank">{{message}}</a> -->
+        <a :href="url" target="_blank">{{message}}</a>
+        <br>
+        <!-- <button v-on:click="addCount()">加数字</button> -->
+        <button @click="addCount">加数字</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                count: 0,
+                message: 'Hello Vue!',
+                temp: `<div style="color:red;">红了</div>`,
+                url: "https://kirakiray.com/pageCreator"
+            },
+            methods: {
+                addCount() {
+                    this.count++;
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <style>
+        .bigSize {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+        <div v-for="o in arr" style="margin-top:10px;">
+            name:<span :class="['a',{bigSize:o.age>92}]">{{o.name}}</span>
+            <br>
+            <div v-show="o.age > 90"> age: <span :style="styleMsg">{{o.age}}</span></div>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!',
+                styleMsg: {
+                    color: "red"
+                },
+                arr: [{
+                    name: "AA",
+                    age: 100
+                }, {
+                    name: "BB",
+                    age: 91
+                }, {
+                    name: "CC",
+                    age: 70
+                }]
+            }
+        })
+
+        setTimeout(e => {
+            app.count--;
+            setTimeout(e => {
+                app.count--;
+            }, 1000);
+        }, 1000);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ msg }}
+        <br>
+        {{msg1}}
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello Vue!',
+                another: "another haha"
+            },
+            watch: {
+                msg(newVal, oldVal) {
+                    console.log("newVal =>", newVal, "  oldVal=>", oldVal);
+                }
+            },
+            computed: {
+                msg1() {
+                    return `computed: ${this.msg} , ${this.another}`;
+                }
+            }
+        });
+
+        setTimeout(e => {
+            app.msg = "change msg";
+            app.another = "c another";
+        }, 1000);
+    </script>
+</body>
+
+</html>

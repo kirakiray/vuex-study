@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+        <div v-if="count > 0">
+            count 大于0 count=> {{count}}
+        </div>
+        <div v-else-if="count==0">
+            count 等于0 count=> {{count}}
+        </div>
+        <div v-else="count < 0">
+            count 小于0 count=> {{count}}
+        </div>
+        <div v-show="count == -1" style="color:red;">count等于{{count}}</div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                count: 1,
+                message: 'Hello Vue!'
+            }
+        })
+
+        setTimeout(e => {
+            app.count--;
+            setTimeout(e => {
+                app.count--;
+            }, 1000);
+        }, 1000);
+    </script>
+</body>
+
+</html>
